@@ -6,12 +6,15 @@ let plot = null;
 
 function calculate() {
     const p_percent = parseFloat(document.getElementById('prob').value);
-    const pulls = parseFloat(document.getElementById('pulls').value);
+    const pulls = parseFloat(document.getElementById('pulls').value) || 0;
     const p = p_percent / 100;
 
     const successProb = (1 - Math.pow((1 - p), pulls)) * 100;
 
-    document.getElementById('result').innerHTML = `가챠로 하나 이상 획득할 확률: 약 ${successProb.toFixed(2)}%`;
+    document.getElementById('result').innerHTML = `
+    가챠로 하나 이상 획득할 확률: 약 ${successProb.toFixed(2)}%<br>
+    확정적(90%)으로 획득하려면 ${calculateGachaPulls(p)}회 가챠가 필요함
+    `;
 
     const labels = [];
     const data = [];
@@ -49,6 +52,11 @@ function calculate() {
             }
         }
     });
+}
+
+function calculateGachaPulls(prob) {
+    let n = Math.log(1 - 0.9) / Math.log(1 - prob);
+    return Math.round(n);
 }
 
 document.getElementById('calcBtn').addEventListener('click', calculate);
