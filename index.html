@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>가챠 시뮬레이터</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+
+<body>
+    <div class="container">
+        <h2>가챠 시뮬레이터</h2>
+        <div class="input-field">
+            <label>가챠 횟수</label>
+            <input type="number" id="pulls" step=1 placeholder="가챠 횟수를 입력하세요">
+        </div>
+
+        <div class="input-field">
+            <label>확률</label>
+            <input type="number" id="prob" step=0.1 placeholder="확률(%)을 입력하세요">
+        </div>
+
+        <button id="calcBtn">시뮬레이션 시작</button>
+
+        <div id="result">값 입력 후 버튼을 눌러주세요!</div>
+
+        <canvas id="plot"></canvas>
+    </div>
+</body>
+
+</html>
